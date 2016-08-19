@@ -6,6 +6,7 @@
 '''
 
 import sys
+import json
 import xlwt
 from log import logger
 
@@ -23,6 +24,12 @@ def data2xls(data, xlsname, sheet_name = 'sheet1'):
     xls.save(xlsname)
     logger.info('suc to create %s' % xlsname)
 
+def dict_to_readable_json(data):
+    return json.dumps(data, indent=4, ensure_ascii=False, encoding="utf8")
+
+def dict_to_short_json(data):
+    return json.dumps(data, ensure_ascii=False, encoding='utf8')
+
 
 ############################################################
 def do_test():
@@ -34,6 +41,13 @@ def do_test():
 
     data2xls(data, 'test.xls', '测试')
 
+    dict_data = {
+            1 : 'abc',
+            'abc' : "哈喽"
+            }
+    print dict_data
+    print dict_to_readable_json(dict_data)
+    print dict_to_short_json(dict_data)
 
 if __name__ == '__main__':
     do_test()
