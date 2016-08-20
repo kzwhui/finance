@@ -1,0 +1,2 @@
+2016-08-20 17:41:52,229   INFO  MainThread   log.py        51:         do_test|| test
+2016-08-20 17:41:52,229  ERROR  MainThread   log.py        52:         do_test|| test
