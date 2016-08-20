@@ -21,7 +21,7 @@ def data2xls(data, xlsname, sheet_name = 'sheet1'):
             sheet.write(i, j, ('%s' % data[i][j]).decode('utf8'))
 
     xls.save(xlsname)
-    logger.info('suc to create xls')
+    logger.info('suc to create %s' % xlsname)
 
 
 ############################################################
