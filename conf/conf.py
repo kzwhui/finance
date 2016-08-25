@@ -12,6 +12,15 @@ class GlobalConfig(object):
                     'passwd' : 'zheng',
                     'db' : 'd_crawler_info',
                     'charset' : 'utf8'
+                },
+
+                'd_finance' : {
+                    'host' : '127.0.0.1',
+                    'port' : 3306,
+                    'user' : 'root',
+                    'passwd' : 'zheng',
+                    'db' : 'd_finance',
+                    'charset' : 'utf8'
                 }
             }
 
