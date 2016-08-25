@@ -25,7 +25,7 @@ def save_to_db(df):
 
     for index, row in df.iterrows():
         sql += '(' + ','.join("'%s'" % row[column] for column in db_key) \
-               + ", '" + row['date'] + " " + row['time'] + "', now()),"
+               + ", '%s %s'" % (row['date'], row['time']) + ", now()),"
     sql = sql[:-1]
     DBWrapperFactory.get_instance('d_finance').execute_sql(sql)
 
