@@ -12,6 +12,10 @@ from db_wrapper import DBWrapperFactory
 def get_db_key(key):
     return 'c_%s' % key
 
+def get_value(v):
+    ans = "%s" % v
+    return "'%s'" % ans if ans else '0'
+
 def save_to_db(df):
     if df is None:
         return
@@ -23,7 +27,7 @@ def save_to_db(df):
           + ', c_date_time, c_create_time) values'
 
     for index, row in df.iterrows():
-        sql += '(' + ','.join("'%s'" % row[column] for column in db_key) \
+        sql += '(' + ','.join(get_value(row[column]) for column in db_key) \
                + ", '%s %s'" % (row['date'], row['time']) + ", now()) "
 
     sql += 'ON DUPLICATE KEY UPDATE '
