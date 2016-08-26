@@ -38,7 +38,7 @@ CREATE TABLE `t_real_time_info`(
   `c_create_time` datetime NOT NULL,
   PRIMARY KEY (`c_id`),
   KEY `code` (`c_code`),
-  UNIQUE KEY `date_time` (`c_date_time`),
+  UNIQUE KEY `code_date_time` (`c_date_time`, `c_code`),
   KEY `modify_time` (`c_modify_time`),
   KEY `create_time` (`c_create_time`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
