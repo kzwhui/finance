@@ -28,8 +28,9 @@ def save_to_db(df):
 
     for index, row in df.iterrows():
         sql += '(' + ','.join(get_value(row[column]) for column in db_key) \
-               + ", '%s %s'" % (row['date'], row['time']) + ", now()) "
+               + ", '%s %s'" % (row['date'], row['time']) + ", now()),"
 
+    sql = sql[:-1]
     sql += 'ON DUPLICATE KEY UPDATE '
     for column in (db_key - set(['code'])):
         sql += '%s = VALUES(%s),' % (get_db_key(column), get_db_key(column))
