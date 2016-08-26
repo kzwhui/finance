@@ -31,7 +31,7 @@ def save_to_db(df):
                + ", '%s %s'" % (row['date'], row['time']) + ", now()) "
 
     sql += 'ON DUPLICATE KEY UPDATE '
-    for column in db_key:
+    for column in (db_key - set(['code'])):
         sql += '%s = VALUES(%s),' % (get_db_key(column), get_db_key(column))
     sql = sql[:-1]
 
