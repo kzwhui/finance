@@ -61,6 +61,7 @@ class DBWrapper(object):
             self.__conn.commit()
         except:
             logger.error(traceback.format_exc())
+            logger.error('execute sql=%s' % sql)
             self.__conn.rollback()
             raise Exception("fail execute sql, sql=%s" % (sql))
         cursor.close()
@@ -81,6 +82,7 @@ class DBWrapper(object):
             results = cursor.fetchall()
         except:
             logger.error(traceback.format_exc())
+            logger.error('execute sql=%s' % sql)
             self.__conn.rollback()
             raise Exception("fail execute sql, sql=%s" % (sql))
         cursor.close()

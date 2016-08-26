@@ -3,7 +3,6 @@
 
 import sys
 import time
-from sqlalchemy import create_engine
 import tushare as ts
 
 sys.path.append('../common')
@@ -25,8 +24,13 @@ def save_to_db(df):
 
     for index, row in df.iterrows():
         sql += '(' + ','.join("'%s'" % row[column] for column in db_key) \
-               + ", '%s %s'" % (row['date'], row['time']) + ", now()),"
+               + ", '%s %s'" % (row['date'], row['time']) + ", now()) "
+
+    sql += 'ON DUPLICATE KEY UPDATE '
+    for column in db_key:
+        sql += '%s = VALUES(%s),' % (get_db_key(column), get_db_key(column))
     sql = sql[:-1]
+
     DBWrapperFactory.get_instance('d_finance').execute_sql(sql)
 
 def local_main():
