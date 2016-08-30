@@ -32,4 +32,12 @@ class GlobalConfig(object):
         'email' : 'xxxx@163.com'
     }
 
+    REDIS_CONF = {
+        'addr' : {
+            'ip' : '127.0.0.1',
+            'port' : 6379
+        },
+        'key_ttl' : 3600
+    }
+
 g_conf = GlobalConfig()
