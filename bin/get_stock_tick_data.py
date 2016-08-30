@@ -42,7 +42,7 @@ def save_to_db(df, stock_code):
 
 def local_main():
     if len(sys.argv) != 2:
-        print sys.argv[0], " [stock id]"
+        print sys.argv[0], "[stock id]"
         return
 
     stock_code = sys.argv[1]
