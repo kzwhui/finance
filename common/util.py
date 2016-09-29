@@ -5,6 +5,7 @@
 常用的函数
 '''
 
+import time
 import sys
 import json
 import xlwt
@@ -32,6 +33,14 @@ def dict_to_readable_json(data):
 def dict_to_short_json(data):
     return json.dumps(data, ensure_ascii=False, encoding='utf8')
 
+def timestamp_to_datetime(time_ticks, format = '%Y-%m-%d %H:%M:%S'):
+    date_time = time.strftime(format, time.localtime(time_ticks))
+    return date_time
+
+def datetime_to_timestamp(date_time, format = '%Y-%m-%d %H:%M:%S'):
+    time_ticks = time.mktime(time.strptime(date_time, format))
+    return int(time_ticks)
+
 
 ############################################################
 def do_test():
@@ -50,6 +59,10 @@ def do_test():
     print dict_data
     print dict_to_readable_json(dict_data)
     print dict_to_short_json(dict_data)
+
+    print timestamp_to_datetime(1475157724)
+    print datetime_to_timestamp("2016-09-29 22:00:01")
+    print datetime_to_timestamp("2016-09-29", "%Y-%m-%d")
 
 if __name__ == '__main__':
     do_test()
